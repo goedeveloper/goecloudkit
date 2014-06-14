@@ -8,13 +8,13 @@ Instalation
 After install the laravel, download this rep to your project directory.
 and type bellow...
 
-#Activate the Shell
-#Go to the directory(goewebapp) which "goewebapp" is located.
-#Type & Enter
-composer update
+Activate the Shell
+Go to the directory(goewebapp) which "goewebapp" is located.
+Type & Enter
+#####composer update
 
-#Go to inside of app folder of your this project in laravel
-chmod -R 777 storage
+Go to inside of app folder of your this project in laravel
+#####chmod -R 777 storage
  
 Reference
 --------
