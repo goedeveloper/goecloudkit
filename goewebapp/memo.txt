@@ -1,0 +1,74 @@
+Laravelプロジェクトの進め方
+
+
+■ Laravelのインストール
+1. プロジェクトの作成
+	xampp/htdocs/直下まで降りて、以下のコマンド
+	$>composer create-project laravel/laravel goe
+
+
+■ テーブル/Modelの作成方法
+\app\config\database.phpのDB/username/passwordを設定しておく。
+
+
+1.　テーcreate_xxxxxx_tableブル元ネタとなるPHPファイルをコマンドにより生成する
+	$>php artisan migrate:make create_xxxs_table --table=xxxs --create
+	このコマンドにより、
+		\app\database\migrations\2014_04_29_084815_create_xxxxxx_table.php
+		phpファイルが出来上がるので、	・この中にtableの実装を行う。
+		※テーブル名は、複数系で登録。
+		※クラス名は、単数形で頭文字は大文字。たとえば、xxxsは、usersとか。
+
+	\app\database\migrations\直下にCreateテーブル用のPHPができるので、ここにプログラムを作成する
+	\app\models\にPHPが作成される
+	\app\database\seeds\には、初期データを突っ込むことができる。
+
+
+2. DBにTableを登録する
+	$>php artisan migrate
+	このコマンドにより、先程のPHPが呼び出されDBにTableがCreateされる。
+	※DB自体はあらかじめ作成しておく必要あり。
+
+3. Modelを手動で作成する。
+	\app\models\
+	直下のディレクトリにModelを作成する。
+
+
+■Viewの作成
+
+
+
+
+
+■Contorllerの作成
+
+
+
+
+
+■ ユーザー認証パッケージの導入（Sentry）
+	⇒Text P120
+1. 	eden直下のcomposer.jsonファイルに、
+	"cartalyst/sentry": "2.0.*"
+	を追加する。
+2.  eden直下で、
+	>composer updateを発行する。
+	すると、インターネットから自動的にSentryをダウンロードしてくる。
+	https://packagist.org/packages/cartalyst/sentry
+3. 	app/config/app.phpに以下のコードを追加する。
+	Cartalyst/Sentry/SentryServiceProcider
+4.	app/config/app.phpに以下のコードを追加する。
+	'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Setnry'
+5. 	Install Schema from Sentry ()
+	このコマンドを打ち込むことで、Setnry用のテーブルを取得することができるｌ。
+	> php artisan migrate --package=cartalyst/sentry
+6.  PUBLISH
+	> php artisan config:publish cartalyst/sentry 
+
+
+//設計書
+php artisan migrate:make create_users_table --table=users --create
+
+
+
+
